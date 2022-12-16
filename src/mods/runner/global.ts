@@ -1,6 +1,6 @@
 import { Context, TestError } from "mods/runner/context.js";
 
-const context = new Context()
+const context = new Context("global")
 
 function unwrap(error: TestError): never {
   let message = error.message

@@ -4,7 +4,9 @@ export class TestError extends Error { }
 
 export class Context {
 
-  constructor() {
+  constructor(
+    readonly message: string
+  ) {
     this.test = this.test.bind(this)
     this.before = this.before.bind(this)
     this.after = this.after.bind(this)
@@ -38,7 +40,7 @@ export class Context {
   async test<T>(message: string, closure: (context: Context) => Promise<T>) {
     try {
       await Promise.all(this.befores.map(it => it()))
-      const result = await closure(new Context())
+      const result = await closure(new Context(message))
       await Promise.all(this.afters.map(it => it()))
       return result
     } catch (cause: unknown) {
