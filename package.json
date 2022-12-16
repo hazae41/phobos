@@ -2,7 +2,7 @@
   "type": "module",
   "name": "@hazae41/phobos",
   "version": "1.0.0",
-  "description": "Modern testing library for Node, Deno and the browser",
+  "description": "Modern and minimalist testing library",
   "author": "hazae41",
   "license": "MIT",
   "main": "./dist/cjs/index.cjs",
