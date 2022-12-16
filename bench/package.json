@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@hazae41/phobos": "^1.0.0",
+    "uvu": "^0.5.6"
+  },
+  "scripts": {
+    "uvu": "node uvu.js",
+    "phobos": "node phobos.js"
+  }
+}
