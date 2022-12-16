@@ -1,6 +1,6 @@
 /**
  * Check if a closure throws
- * @param closure 
+ * @param closure closure to check
  * @returns true if the function throwed
  */
 export function throws(closure: () => unknown) {

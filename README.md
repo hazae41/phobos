@@ -6,15 +6,71 @@ npm i @hazae41/phobos
 
 [**Node Package 📦**](https://www.npmjs.com/package/@hazae41/phobos)
 
-### Current features
+## Philosophy
+
+Phobos aims to be minimalist and to always work no matter the:
+- runtime (Node, Deno, browser)
+- module resolution (ESM, CommonJS)
+- language (TypeScript, JavaScript)
+- bundler (Rollup, Vite)
+
+It's just a library you can import everywhere! That's it, no CLI, no configuration file, just JavaScript.
+
+## Current features
 - 100% TypeScript and ESM
 - No external dependency
-- Self unit tested
-- Resolution based on import tree
-- Aims to be runnable in the browser
+- Unit tested (by itself)
+- Resolution based on imports
+- Runnable in the browser
 
-### Usage
+## Usage
 
 ```typescript
-import { assert } from "@hazae41/phobos"
+import { assert, test } from "@hazae41/phobos"
+
+test("it should work", async () => {
+  assert(false, "oh no")
+})
+```
+
+## Running
+
+### Setup
+
+Most setups will just need a custom entry point that imports all your tests, that you either run as-is using `ts-node`, or that you transpile using your favorite bundler.
+
+For example, the entry point `index.test.ts` imports:
+  - `some-module/index.test.ts`, which imports:
+    - `some-module/some-file.test.ts`
+    - `some-module/some-other-file.test.ts`
+  - `some-other-module/index.test.ts`, which imports:
+    - `some-other-module/some-file.test.ts`
+    - `some-other-module/some-other-file.test.ts`
+
+You can see an example on this repository, all tests are imported in `src/index.test.ts`, then we use Rollup to transpile it into `dist/test/index.test.cjs`, which we then run using Node with `node ./dist/test/index.test.cjs`.
+
+### Examples
+
+#### Using a bundler
+
+```bash
+node ./dist/test/index.test.cjs
+```
+
+#### Using ts-node with ESM
+
+```bash
+ts-node --esm src/index.test.ts
+```
+
+#### Using ts-node with ESM and ttypescript
+
+```bash
+ts-node --esm --compiler ttypescript src/index.test.ts
+```
+
+#### Using dynamic import
+
+```typescript
+await import("index.test.ts")
 ```
