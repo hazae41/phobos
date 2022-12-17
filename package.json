@@ -38,5 +38,19 @@
   },
   "files": [
     "/dist"
+  ],
+  "keywords": [
+    "phobos",
+    "test",
+    "testing",
+    "runner",
+    "typescript",
+    "fast",
+    "minimalist",
+    "esmodules",
+    "parallel",
+    "concurrent",
+    "asynchronous",
+    "browser"
   ]
 }
