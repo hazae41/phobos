@@ -1,8 +1,6 @@
 import { Context, TestError } from "mods/runner/context.js";
 
-const context = new Context("global")
-
-function unwrap(error: TestError): never {
+function unwrap(error: TestError) {
   let message = error.message
 
   while (error.cause instanceof TestError) {
@@ -10,7 +8,7 @@ function unwrap(error: TestError): never {
     message = `${message} > ${error.message}`
   }
 
-  throw new TestError(message, { cause: error.cause })
+  return new TestError(message, { cause: error.cause })
 }
 
 /**
@@ -21,10 +19,10 @@ function unwrap(error: TestError): never {
  */
 export async function test<T>(message: string, closure: (context: Context) => Promise<T>) {
   try {
-    return await context.test(message, closure)
-  } catch (error: unknown) {
-    if (error instanceof TestError)
-      return unwrap(error)
-    throw error
+    return await closure(new Context(message))
+  } catch (cause: unknown) {
+    if (cause instanceof TestError)
+      throw unwrap(new TestError(message, { cause }))
+    throw new TestError(message, { cause })
   }
 }
