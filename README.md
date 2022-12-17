@@ -11,7 +11,7 @@ npm i @hazae41/phobos
 
 [**Node Package 📦**](https://www.npmjs.com/package/@hazae41/phobos)
 
-## Philosophy
+## Philosophy 🧠
 
 Phobos aims to be minimalist and to always work no matter the:
 - runtime (Node, Deno, browser)
@@ -21,7 +21,10 @@ Phobos aims to be minimalist and to always work no matter the:
 
 It's just a library you can import everywhere! That's it, no CLI, no configuration file, just JavaScript.
 
+# Features 🔥
+
 ## Current features
+
 - 100% TypeScript and ESM
 - No external dependency
 - Unit tested (by itself)
@@ -30,7 +33,7 @@ It's just a library you can import everywhere! That's it, no CLI, no configurati
 - Asynchronous fork-join parallelism
 - Function calls spying
 
-## Usage
+## Usage 🚀
 
 ```typescript
 import { assert, test } from "@hazae41/phobos"
@@ -110,9 +113,7 @@ test("it should work", async () => {
 })
 ```
 
-## Running a test tree
-
-### Setup
+## Setting up 🔧
 
 Most setups will just need a custom entry point that imports all your tests, that you either run as-is using `ts-node`, or that you transpile using your favorite bundler.
 
@@ -126,7 +127,7 @@ For example, the entry point `index.test.ts` imports:
 
 You can see an example on this repository, all tests are imported in `src/index.test.ts`, then we use Rollup to transpile it into `dist/test/index.test.cjs`, which we then run using Node with `node ./dist/test/index.test.cjs`.
 
-### Examples
+## Running 🏎️
 
 #### Using a bundler
 
