@@ -74,13 +74,13 @@ node ./dist/test/index.test.cjs
 #### Using ts-node with ESM
 
 ```bash
-ts-node --esm src/index.test.ts
+ts-node --esm ./src/index.test.ts
 ```
 
 #### Using ts-node with ESM and ttypescript
 
 ```bash
-ts-node --esm --compiler ttypescript src/index.test.ts
+ts-node --esm --compiler ttypescript ./src/index.test.ts
 ```
 
 #### Using dynamic import
