@@ -47,6 +47,51 @@ test("it should work", async () => {
 ts-node --esm ./test.ts
 ```
 
+### Concurrent tests
+
+Test blocks are always executed concurrently, unless you `await` them
+
+```typescript
+import { assert, test } from "@hazae41/phobos"
+
+test("it should work", async ({ test }) => {
+  
+  // run in sequence
+  await test("first test", async () => {
+    assert(true, "should be true")
+  })
+  
+  // or in parallel
+  test("second test", async () => {
+    assert(true, "should be true")
+  })
+})
+```
+
+You can also use `await wait()` to forcefully join
+
+```typescript
+import { assert, test } from "@hazae41/phobos"
+
+test("it should work", async ({ test, wait }) => {
+  
+  test("first test", async () => {
+    assert(true, "should be true")
+  })
+  
+  test("second test", async () => {
+    assert(true, "should be true")
+  })
+
+  // wait first and second tests
+  await wait()
+
+  test("third test", async () => {
+    assert(true, "should be true")
+  })
+})
+```
+
 ## Running a test tree
 
 ### Setup
