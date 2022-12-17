@@ -12,11 +12,11 @@ function notThrowable() {
 test("it should test", async ({ test, before, after }) => {
 
   before(async () => {
-    console.log("this is shown before")
+    console.log("this is shown before each test")
   })
 
   after(async () => {
-    console.log("this is shown after")
+    console.log("this is shown after each test")
   })
 
   await test("it should not throw", async () => {
