@@ -1,7 +1,9 @@
 <div align="center">
 <img width="500" src="https://user-images.githubusercontent.com/4405263/208164108-5be58f53-a29b-46b3-be90-3886f4afc32d.png" />
-<h3 align="center">Modern and minimalist testing library</h3>
 </div>
+<h3 align="center">
+Modern and minimalist testing library
+</h3>
 
 ```bash
 npm i @hazae41/phobos

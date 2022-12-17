@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@hazae41/phobos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Modern and minimalist testing library",
   "author": "hazae41",
   "license": "MIT",
