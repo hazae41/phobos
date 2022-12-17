@@ -1,8 +1,8 @@
 {
   "type": "module",
   "name": "@hazae41/phobos",
-  "version": "1.0.1",
-  "description": "Modern and minimalist testing library",
+  "version": "1.0.2",
+  "description": "Modern and minimalist testing library for the web",
   "author": "hazae41",
   "license": "MIT",
   "main": "./dist/cjs/index.cjs",

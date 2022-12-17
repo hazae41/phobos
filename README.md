@@ -26,11 +26,12 @@ It's just a library you can import everywhere! That's it, no CLI, no configurati
 - No external dependency
 - Unit tested (by itself)
 - Runnable in the browser
-- Minimalist test runner
 - Minimalist assertion helpers
 - Run code before and after each test
 - Run test blocks in test blocks
-- Run asynchronous code
+- Run asynchronous code in sequence
+- Run asynchronous code in parallel
+- Run code on each error
 
 ## Usage
 
@@ -42,7 +43,11 @@ test("it should work", async () => {
 })
 ```
 
-## Running
+```bash
+ts-node --esm ./test.ts
+```
+
+## Running a test tree
 
 ### Setup
 

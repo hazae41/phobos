@@ -1,6 +1,6 @@
-import { Context, TestError } from "mods/runner/context.js";
+import { Context, TestError } from "mods/runner/context/context.js";
 
-function unwrap(error: TestError) {
+export function unwrap(error: TestError) {
   let message = error.message
 
   while (error.cause instanceof TestError) {
@@ -17,9 +17,11 @@ function unwrap(error: TestError) {
  * @param closure closure to run
  * @returns result of closure
  */
-export async function test<T>(message: string, closure: (context: Context) => Promise<T>) {
+export async function test(message: string, closure: (context: Context) => Promise<void>) {
   try {
-    return await closure(new Context(message))
+    const context = new Context(message)
+    await closure(context)
+    await context.wait()
   } catch (cause: unknown) {
     if (cause instanceof TestError)
       throw unwrap(new TestError(message, { cause }))
