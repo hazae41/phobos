@@ -23,15 +23,13 @@ test("before and after", async ({ test, before, after }) => {
   assert(check === false, `failed inner check`)
 })
 
-class MyError extends Error { }
-
 test("catcher can rethrow", async ({ test, catcher }) => {
   catcher(async (e) => {
-    assert(e.cause instanceof MyError, `failed to catch`)
+    assert(e.cause === "yes", `failed to catch`)
   })
 
   await test("just a test that throws", async () => {
-    throw new MyError()
+    throw "yes"
   })
 })
 
@@ -41,7 +39,7 @@ test("catcher can just count", async ({ test, catcher }) => {
   catcher(async () => { counter++ })
 
   await test("just a test that throws", async () => {
-    throw new MyError()
+    throw "yes"
   })
 
   assert(counter === 1, `counter should be 1`)
