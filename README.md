@@ -21,9 +21,9 @@ Phobos aims to be minimalist and to always work no matter the:
 
 It's just a library you can import everywhere! That's it, no CLI, no configuration file, just JavaScript.
 
-# Features 🔥
+## Features 🔥
 
-## Current features
+### Current features
 
 - 100% TypeScript and ESM
 - No external dependency
