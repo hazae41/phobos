@@ -27,11 +27,8 @@ It's just a library you can import everywhere! That's it, no CLI, no configurati
 - Unit tested (by itself)
 - Runnable in the browser
 - Minimalist assertion helpers
-- Run code before and after each test
-- Run test blocks in test blocks
-- Run asynchronous code in sequence
-- Run asynchronous code in parallel
-- Run code on each error
+- Asynchronous fork-join parallelism
+- Function calls spying
 
 ## Usage
 
@@ -89,6 +86,27 @@ test("it should work", async ({ test, wait }) => {
   test("third test", async () => {
     assert(true, "should be true")
   })
+})
+```
+
+### Spying function calls
+
+You can spy on function calls using `spy(function)`
+
+You can then `.call()` it and get a list of all its `.calls`
+
+```typescript
+import { assert, test, spy } from "@hazae41/phobos"
+
+test("it should work", async () => {
+  const f = spy((param: boolean) => !param)
+
+  const result = f.call(true)
+  assert(result === false, `result should be false`)
+
+  assert(f.calls.length === 1, `should have been called 1 time`)
+  assert(f.calls[0].params[0] === true, `should have been called with true`)
+  assert(f.calls[0].result === false, `should have resulted in false`)
 })
 ```
 
