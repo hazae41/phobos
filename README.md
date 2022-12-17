@@ -26,9 +26,11 @@ It's just a library you can import everywhere! That's it, no CLI, no configurati
 - No external dependency
 - Unit tested (by itself)
 - Runnable in the browser
-- Run test blocks in test blocks
+- Minimalist test runner
+- Minimalist assertion helpers
 - Run code before and after each test
-- Assertion helpers
+- Run test blocks in test blocks
+- Run asynchronous code
 
 ## Usage
 
