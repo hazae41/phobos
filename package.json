@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@hazae41/phobos",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Modern and minimalist testing library for the web",
   "homepage": "https://github.com/hazae41/phobos",
   "repository": "github:hazae41/phobos",
@@ -33,6 +33,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^3.2.5",
     "rollup-plugin-dts": "^5.0.0",
+    "rollup-plugin-node-externals": "^5.0.3",
     "ts-node": "^10.9.1",
     "ttypescript": "^1.5.13",
     "typescript": "^4.8.4",
