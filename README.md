@@ -33,7 +33,7 @@ It's just a library you can import everywhere! That's it, no CLI, no configurati
 - Asynchronous fork-join parallelism
 - Function calls spying
 
-### Upcoming features
+### [Upcoming features](https://github.com/sponsors/hazae41)
 - Mocks
 - Diffing
 
