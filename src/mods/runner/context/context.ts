@@ -1,6 +1,5 @@
 import { Promisable } from "libs/promisable.js";
-
-export class TestError extends Error { }
+import { TestError } from "mods/runner/error.js";
 
 export class Context {
   private _befores = new Array<(context: Context) => Promisable<void>>()

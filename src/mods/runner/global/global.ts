@@ -1,4 +1,5 @@
-import { Context, TestError } from "mods/runner/context/context.js";
+import { Context } from "mods/runner/context/context.js";
+import { TestError } from "mods/runner/error.js";
 
 export function unwrap(error: TestError) {
   let message = error.message
