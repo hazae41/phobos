@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@hazae41/phobos",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Modern and minimalist testing library for the web",
   "homepage": "https://github.com/hazae41/phobos",
   "repository": "github:hazae41/phobos",
