@@ -1,9 +1,8 @@
-import { Promisable } from "libs/promisable.js";
 import { TestError } from "mods/runner/error.js";
 
 export class Context {
-  private _befores = new Array<(context: Context) => Promisable<void>>()
-  private _afters = new Array<(context: Context) => Promisable<void>>()
+  private _befores = new Array<(context: Context) => Promise<void>>()
+  private _afters = new Array<(context: Context) => Promise<void>>()
 
   private _catcher?: (error: TestError, context: Context) => Promise<void>
 

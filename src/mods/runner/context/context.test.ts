@@ -1,5 +1,10 @@
 import { assert } from "mods/assert/assert.js";
 import { test } from "mods/runner/global/global.js";
+import { relative, resolve } from "node:path";
+
+const directory = resolve("./dist/test/")
+const { pathname } = new URL(import.meta.url)
+console.log(relative(directory, pathname.replace(".mjs", ".ts")))
 
 test("before and after", async ({ test, before, after }) => {
   let check = false

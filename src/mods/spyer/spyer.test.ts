@@ -1,6 +1,11 @@
 import { assert } from "mods/assert/assert.js";
 import { test } from "mods/runner/global/global.js";
 import { spy } from "mods/spyer/spyer.js";
+import { relative, resolve } from "node:path";
+
+const directory = resolve("./dist/test/")
+const { pathname } = new URL(import.meta.url)
+console.log(relative(directory, pathname.replace(".mjs", ".ts")))
 
 test("spyer", async ({ test }) => {
 
