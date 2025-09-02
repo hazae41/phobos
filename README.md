@@ -6,10 +6,10 @@ Modern and minimalist testing library
 </h3>
 
 ```bash
-npm i @hazae41/phobos
+deno install @hazae41/phobos
 ```
 
-[**Node Package 📦**](https://www.npmjs.com/package/@hazae41/phobos)
+[**JSR Package 📦**](https://www.npmjs.com/package/@hazae41/phobos)
 
 ## Philosophy 🧠
 

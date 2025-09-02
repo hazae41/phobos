@@ -8,5 +8,5 @@ import { Context } from "@/mods/runner/context/mod.ts";
  * @returns result of closure
  */
 export function test(name: string, closure: Closure) {
-  Deno.test(name, inner => Promise.try(() => closure(new Context(inner))))
+  return Context.test(name, closure)
 }
