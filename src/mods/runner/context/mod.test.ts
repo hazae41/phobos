@@ -1,10 +1,4 @@
-import { assert } from "@/mods/assert/mod.ts";
-import { test } from "@/mods/runner/global/mod.ts";
-import { relative, resolve } from "node:path";
-
-const directory = resolve("./dist/test/")
-const { pathname } = new URL(import.meta.url)
-console.log(relative(directory, pathname.replace(".mjs", ".ts")))
+import { assert, test } from "@/mod.ts";
 
 test("before and after", async ({ test, before, after }) => {
   let check = false
@@ -96,3 +90,9 @@ test("parallel error vs inner error", async ({ test, catcher }) => {
   assert(count === 1, `should have catched 1 time`)
   assert(cause === "inner", `cause should be inner`)
 })
+
+Deno.test("", async ({ step }) => {
+  await step(async ({ step }) => {
+
+  })
+}) 

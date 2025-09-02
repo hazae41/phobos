@@ -2,10 +2,13 @@ import type { Awaitable } from "@/libs/awaitable/mod.ts";
 import { TestError } from "@/mods/runner/error/mod.ts";
 
 export class Context {
-  private _befores = new Array<(context: Context) => Awaitable<void>>()
-  private _afters = new Array<(context: Context) => Awaitable<void>>()
 
-  private _catcher?: (error: TestError, context: Context) => Awaitable<void>
+  #befores = new Array<(context: Context) => Awaitable<void>>()
+  #afters = new Array<(context: Context) => Awaitable<void>>()
+
+  #catcher?: (error: TestError, context: Context) => Awaitable<void>
+
+  #tests = new Array<Promise<void>>()
 
   constructor(
     readonly message: string
@@ -22,7 +25,7 @@ export class Context {
    * @param closure closure
    */
   before(closure: (context: Context) => Awaitable<void>) {
-    this._befores.push(closure)
+    this.#befores.push(closure)
   }
 
   /**
@@ -30,7 +33,7 @@ export class Context {
    * @param closure closure
    */
   after(closure: (context: Context) => Awaitable<void>) {
-    this._afters.push(closure)
+    this.#afters.push(closure)
   }
 
   /**
@@ -38,10 +41,8 @@ export class Context {
    * @param closure 
    */
   catcher(closure: (error: TestError, context: Context) => Awaitable<void>) {
-    this._catcher = closure
+    this.#catcher = closure
   }
-
-  private _tests = new Array<Promise<void>>()
 
   /**
    * Run a test block
@@ -50,15 +51,15 @@ export class Context {
    * @returns result of closure
    */
   test(message: string, closure: (context: Context) => Awaitable<void>): Promise<void> {
-    const promise = this._test(message, closure)
-    this._tests.push(promise)
+    const promise = this.#test(message, closure)
+    this.#tests.push(promise)
     return promise.catch(() => { })
   }
 
-  private async _test(message: string, closure: (context: Context) => Awaitable<void>) {
+  async #test(message: string, closure: (context: Context) => Awaitable<void>) {
     const context = new Context(message)
 
-    for (const before of this._befores)
+    for (const before of this.#befores)
       await before(context)
 
     try {
@@ -66,15 +67,15 @@ export class Context {
       await context.wait()
     } catch (cause: unknown) {
       const error = new TestError(message, { cause })
-      if (!this._catcher) throw error
+      if (!this.#catcher) throw error
 
       try {
-        await this._catcher?.(error, context)
+        await this.#catcher?.(error, context)
       } catch (cause: unknown) {
         throw new TestError(message, { cause })
       }
     } finally {
-      for (const after of this._afters)
+      for (const after of this.#afters)
         await after(context)
     }
   }
@@ -85,9 +86,9 @@ export class Context {
    */
   async wait() {
     try {
-      await Promise.all(this._tests)
+      await Promise.all(this.#tests)
     } finally {
-      this._tests = []
+      this.#tests = []
     }
   }
 }

@@ -1,10 +1,5 @@
 
 import { assert, rejects, test, throws } from "@/mod.ts";
-import { relative, resolve } from "node:path";
-
-const directory = resolve("./dist/test/")
-const { pathname } = new URL(import.meta.url)
-console.log(relative(directory, pathname.replace(".mjs", ".ts")))
 
 function throwable() {
   throw new Error("lol")
