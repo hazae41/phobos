@@ -33,22 +33,14 @@ It's just a library you can import everywhere! That's it, no CLI, no configurati
 - Asynchronous fork-join parallelism
 - Function calls spying
 
-### [Upcoming features](https://github.com/sponsors/hazae41)
-- Mocks
-- Diffing
-
 ## Usage 🚀
 
 ```typescript
 import { assert, test } from "@hazae41/phobos"
 
-test("it should work", async () => {
+test("it should work", () => {
   assert(false, "oh no")
 })
-```
-
-```bash
-ts-node --esm ./test.ts
 ```
 
 ### Concurrent tests
@@ -72,27 +64,31 @@ test("it should work", async ({ test }) => {
 })
 ```
 
-You can also use `await wait()` to forcefully join
+You can also use `await Promise.all(...)` to forcefully join
 
 ```typescript
 import { assert, test } from "@hazae41/phobos"
 
-test("it should work", async ({ test, wait }) => {
+test("it should work", async ({ test }) => {
+  const tests = []
   
-  test("first test", async () => {
+  tests.push(test("first test", async () => {
     assert(true, "should be true")
-  })
+  }))
   
-  test("second test", async () => {
+  tests.push(test("second test", async () => {
     assert(true, "should be true")
-  })
+  }))
 
   // wait first and second tests
-  await wait()
+  await Promise.all(tests)
 
-  test("third test", async () => {
+  tests.push(test("third test", async () => {
     assert(true, "should be true")
-  })
+  }))
+
+  // wait last test
+  await Promise.all(tests)
 })
 ```
 
@@ -117,42 +113,22 @@ test("it should work", async () => {
 })
 ```
 
-## Setting up 🔧
-
-Most setups will just need a custom entry point that imports all your tests, that you either run as-is using `ts-node`, or that you transpile using your favorite bundler.
-
-For example, the entry point `index.test.ts` imports:
-  - `some-module/index.test.ts`, which imports:
-    - `some-module/some-file.test.ts`
-    - `some-module/some-other-file.test.ts`
-  - `some-other-module/index.test.ts`, which imports:
-    - `some-other-module/some-file.test.ts`
-    - `some-other-module/some-other-file.test.ts`
-
-You can see an example on this repository, all tests are imported in `src/index.test.ts`, then we use Rollup to transpile it into `dist/test/index.test.cjs`, which we then run using Node with `node ./dist/test/index.test.cjs`.
-
 ## Running 🏎️
 
-#### Using a bundler
+#### Node
 
 ```bash
-node ./dist/test/index.test.cjs
+node ./src/**/**.test.ts
 ```
 
-#### Using ts-node with ESM
+#### Deno
 
 ```bash
-ts-node --esm ./src/index.test.ts
+deno test
 ```
 
-#### Using ts-node with ESM and ttypescript
-
-```bash
-ts-node --esm --compiler ttypescript ./src/index.test.ts
-```
-
-#### Using dynamic import
+#### Other
 
 ```typescript
-await import("index.test.ts")
+await import("./mymodule.test.ts")
 ```
