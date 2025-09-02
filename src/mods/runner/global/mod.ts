@@ -7,6 +7,6 @@ import { Context } from "@/mods/runner/context/mod.ts";
  * @param closure closure to run
  * @returns result of closure
  */
-export function test(name: string, closure: Closure) {
+export function test(name: string, closure: Closure): void {
   return Context.test(name, closure)
 }

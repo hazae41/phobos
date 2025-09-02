@@ -12,7 +12,7 @@ export interface Context {
 // deno-lint-ignore no-namespace
 export namespace Context {
 
-  export function test(name: string, closure: Closure) {
+  export function test(name: string, closure: Closure): void {
     if ("Deno" in globalThis)
       return DenoContext.test(name, closure)
     if ("process" in globalThis)
@@ -64,7 +64,7 @@ export namespace Context {
       Deno.test(name, c => Promise.try(() => closure(new DenoContext(c))))
     }
 
-    get name() {
+    get name(): string {
       return this.inner.name
     }
 
