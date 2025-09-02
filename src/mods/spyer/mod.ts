@@ -1,5 +1,3 @@
-import { Call } from "mods/spyer/call.js"
-
 export function spy<P extends Array<unknown>, R>(
   closure: (...p: P) => R
 ) {
@@ -18,4 +16,12 @@ export class Spyer<P extends Array<unknown>, R> {
     this.calls.push(new Call(params, result))
     return result
   }
+}
+
+export class Call<P extends Array<unknown>, R> {
+  constructor(
+    readonly params: P,
+    readonly result: R,
+    readonly time = new Date()
+  ) { }
 }

@@ -1,6 +1,6 @@
-import { assert } from "mods/assert/assert.js";
-import { test } from "mods/runner/global/global.js";
-import { spy } from "mods/spyer/spyer.js";
+import { assert } from "@/mods/assert/assert.js";
+import { test } from "@/mods/runner/global/global.js";
+import { spy } from "@/mods/spyer/mod.ts";
 import { relative, resolve } from "node:path";
 
 const directory = resolve("./dist/test/")

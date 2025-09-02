@@ -1,0 +1,10 @@
+{
+  "name": "@hazae41/phobos",
+  "version": "2.0.0",
+  "imports": {
+    "@/": "./src/"
+  },
+  "exports": {
+    ".": "./src/mod.ts"
+  }
+}
