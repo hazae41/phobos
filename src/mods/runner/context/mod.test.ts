@@ -1,5 +1,5 @@
-import { assert } from "mods/assert/assert.js";
-import { test } from "mods/runner/global/global.js";
+import { assert } from "@/mods/assert/mod.ts";
+import { test } from "@/mods/runner/global/mod.ts";
 import { relative, resolve } from "node:path";
 
 const directory = resolve("./dist/test/")
@@ -9,19 +9,19 @@ console.log(relative(directory, pathname.replace(".mjs", ".ts")))
 test("before and after", async ({ test, before, after }) => {
   let check = false
 
-  before(async () => {
+  before(() => {
     assert(check === false, `failed before check`)
 
     check = true
   })
 
-  after(async () => {
+  after(() => {
     assert(check === true, `failed after check`)
 
     check = false
   })
 
-  await test("just a test", async () => {
+  await test("just a test", () => {
     assert(check === true, `failed inner check`)
   })
 
@@ -29,11 +29,11 @@ test("before and after", async ({ test, before, after }) => {
 })
 
 test("catcher can rethrow", async ({ test, catcher }) => {
-  catcher(async (e) => {
+  catcher((e) => {
     assert(e.cause === "yes", `failed to catch`)
   })
 
-  await test("just a test that throws", async () => {
+  await test("just a test that throws", () => {
     throw "yes"
   })
 })
@@ -41,9 +41,9 @@ test("catcher can rethrow", async ({ test, catcher }) => {
 test("catcher can just count", async ({ test, catcher }) => {
   let counter = 0
 
-  catcher(async () => { counter++ })
+  catcher(() => { counter++ })
 
-  await test("just a test that throws", async () => {
+  await test("just a test that throws", () => {
     throw "yes"
   })
 
@@ -64,7 +64,7 @@ test("wait", async ({ test, wait }) => {
 
   try {
     await wait()
-  } catch (e: unknown) {
+  } catch (_: unknown) {
     catched = true
   }
 
@@ -75,12 +75,12 @@ test("parallel error vs inner error", async ({ test, catcher }) => {
   let count = 0
   let cause: unknown = "none"
 
-  catcher(async (e) => {
+  catcher((e) => {
     count++
     cause = e.cause
   })
 
-  await test("our inner test", async ({ test }) => {
+  await test("our inner test", ({ test }) => {
     test("just a test that runs parallelized and throws", async () => {
       await new Promise(ok => setTimeout(ok, 200))
       throw "parallel"

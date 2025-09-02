@@ -1,15 +1,13 @@
-import { assert } from "@/mods/assert/assert.js";
-import { test } from "@/mods/runner/global/global.js";
-import { spy } from "@/mods/spyer/mod.ts";
+import { assert, spy, test } from "@/mod.ts";
 import { relative, resolve } from "node:path";
 
 const directory = resolve("./dist/test/")
 const { pathname } = new URL(import.meta.url)
 console.log(relative(directory, pathname.replace(".mjs", ".ts")))
 
-test("spyer", async ({ test }) => {
+test("spyer", ({ test }) => {
 
-  test("a simple boolean-not function", async () => {
+  test("a simple boolean-not function", () => {
     const f = spy((param: boolean) => !param)
 
     const result = f.call(true)

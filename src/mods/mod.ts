@@ -1,4 +1,4 @@
-export * from "./assert/index.js";
-export * from "./runner/index.js";
-export * from "./spyer/index.js";
-
+export * from "./assert/mod.ts";
+export * from "./runner/mod.ts";
+export * from "./spyer/mod.ts";
+export * from "./throws/mod.ts";

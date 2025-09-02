@@ -1,3 +1,3 @@
-export * from "./mods/mod.js";
-export * as Phobos from "./mods/mod.js";
+export * from "./mods/mod.ts";
+export * as Phobos from "./mods/mod.ts";
 

@@ -1,4 +1,9 @@
-import { AssertError } from "mods/assert/error.js";
+export class AssertError extends Error {
+  readonly #class = AssertError
+
+  override readonly name: string = this.#class.name
+
+}
 
 /**
  * Just an assert function
