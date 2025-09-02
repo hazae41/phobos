@@ -1,19 +1,12 @@
-import type { Awaitable } from "@/libs/awaitable/mod.ts";
+import type { Closure } from "@/mods/runner/closure/mod.ts";
 import { Context } from "@/mods/runner/context/mod.ts";
-import { TestError } from "@/mods/runner/error/mod.ts";
 
 /**
  * Run a test block
- * @param message message to show
+ * @param name message to show
  * @param closure closure to run
  * @returns result of closure
  */
-export async function test(message: string, closure: (context: Context) => Awaitable<void>) {
-  try {
-    const context = new Context(message)
-    await closure(context)
-    await context.wait()
-  } catch (cause: unknown) {
-    throw TestError.unroll(new TestError(message, { cause }))
-  }
+export function test(name: string, closure: Closure) {
+  Deno.test(name, inner => Promise.try(() => closure(new Context(inner))))
 }

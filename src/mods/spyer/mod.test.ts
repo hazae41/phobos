@@ -1,8 +1,8 @@
 import { assert, spy, test } from "@/mod.ts";
 
-test("spyer", ({ test }) => {
+test("spyer", async ({ test }) => {
 
-  test("a simple boolean-not function", () => {
+  await test("a simple boolean-not function", () => {
     const f = spy((param: boolean) => !param)
 
     const result = f.call(true)
