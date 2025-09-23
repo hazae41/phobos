@@ -6,10 +6,14 @@ Modern and minimalist testing library
 </h3>
 
 ```bash
+npm install @hazae41/phobos
+```
+
+```bash
 deno install jsr:@hazae41/phobos
 ```
 
-[**JSR Package 📦**](https://jsr.io/@hazae41/phobos)
+[**📦 NPM**](https://www.npmjs.com/package/@hazae41/rewind) • [**📦 JSR**](https://jsr.io/@hazae41/rewind)
 
 ## Philosophy 🧠
 
