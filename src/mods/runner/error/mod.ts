@@ -5,7 +5,6 @@ export class TestError extends Error {
 
 }
 
-// deno-lint-ignore no-namespace
 export namespace TestError {
 
   export function unroll(message: string, cause: unknown): TestError {

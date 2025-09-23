@@ -9,7 +9,6 @@ export interface Context {
 
 }
 
-// deno-lint-ignore no-namespace
 export namespace Context {
 
   export function test(name: string, closure: Closure): void {

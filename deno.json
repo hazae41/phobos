@@ -6,5 +6,12 @@
   },
   "exports": {
     ".": "./src/mod.ts"
+  },
+  "lint": {
+    "rules": {
+      "exclude": [
+        "no-namespace"
+      ]
+    }
   }
 }
