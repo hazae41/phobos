@@ -122,7 +122,7 @@ test("it should work", async () => {
 #### Node
 
 ```bash
-node --test ./out/**/*.test.js
+node --test --test-concurrency=1 ./out/**/*.test.js
 ```
 
 #### Deno
