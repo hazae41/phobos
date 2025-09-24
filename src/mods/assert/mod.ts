@@ -2,6 +2,7 @@ export class AssertError extends Error {
   readonly #class = AssertError
 
   override readonly name: string = this.#class.name
+
 }
 
 /**
