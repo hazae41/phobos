@@ -13,7 +13,7 @@ npm install @hazae41/phobos
 deno install jsr:@hazae41/phobos
 ```
 
-[**📦 NPM**](https://www.npmjs.com/package/@hazae41/rewind) • [**📦 JSR**](https://jsr.io/@hazae41/rewind)
+[**📦 NPM**](https://www.npmjs.com/package/@hazae41/phobos) • [**📦 JSR**](https://jsr.io/@hazae41/phobos)
 
 ## Philosophy 🧠
 
@@ -122,13 +122,13 @@ test("it should work", async () => {
 #### Node
 
 ```bash
-node ./src/**/**.test.ts
+node --test ./out/**/**.test.ts
 ```
 
 #### Deno
 
 ```bash
-deno test
+deno test ./src
 ```
 
 #### Other
