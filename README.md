@@ -122,13 +122,13 @@ test("it should work", async () => {
 #### Node
 
 ```bash
-node --test ./out/**/*.test.ts
+node --test ./out/**/*.test.js
 ```
 
 #### Deno
 
 ```bash
-deno test ./src
+deno test ./src/**/*.test.ts
 ```
 
 #### Other
