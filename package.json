@@ -6,6 +6,7 @@
   "repository": "github:hazae41/phobos",
   "author": "hazae41",
   "scripts": {
+    "examine": "deno lint ./src && deno check ./src && deno test ./src",
     "prepare": "rm -rf ./out && tsc && tscousin",
     "version": "deno -RW ./vsync.ts && git add deno.json"
   },
@@ -19,7 +20,7 @@
     }
   },
   "devDependencies": {
-    "@hazae41/tscousin": "^1.0.13",
+    "@hazae41/tscousin": "^1.0.18",
     "@types/node": "^24.5.2",
     "typescript": "^5.9.2"
   }
