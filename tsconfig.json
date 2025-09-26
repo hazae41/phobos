@@ -12,7 +12,7 @@
     "outDir": "./out",
     "declaration": true,
     "skipLibCheck": true,
-    "noCheck": true,
+    "noCheck": true
   },
   "include": [
     "./src/**/*"
