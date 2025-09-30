@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "es2024",
-    "types": ["./lib.deno.d.ts"],
     "baseUrl": "./src",
     "lib": ["ESNext", "DOM"],
     "paths": {
@@ -11,7 +10,6 @@
     "moduleResolution": "nodenext",
     "outDir": "./out",
     "declaration": true,
-    "skipLibCheck": true,
     "noCheck": true
   },
   "include": [
