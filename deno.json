@@ -14,5 +14,12 @@
         "no-namespace"
       ]
     }
+  },
+  "compilerOptions": {
+    "lib": [
+      "esnext",
+      "dom",
+      "deno.ns"
+    ]
   }
 }
