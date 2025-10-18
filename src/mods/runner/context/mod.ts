@@ -1,3 +1,5 @@
+/// <reference lib="deno.ns" />
+
 import Node from "node:test";
 import type { Closure } from "../closure/mod.ts";
 import { TestError } from "../error/mod.ts";
