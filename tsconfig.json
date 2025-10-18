@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2024",
-    "baseUrl": "./src",
-    "lib": ["ESNext", "DOM", "deno.ns"],
+    "target": "es2024", 
+    "lib": ["ESNext"],
+    "rootDir": "./src",
     "paths": {
-      "@/*": ["./*"]
-    },
+      "@/*": ["./src/*"]
+    } ,
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "outDir": "./out",
@@ -14,5 +14,6 @@
   },
   "include": [
     "./src/**/*"
-  ]
+  ],
+  "exclude": []
 }
